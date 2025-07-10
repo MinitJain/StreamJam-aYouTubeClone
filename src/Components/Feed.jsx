@@ -1,7 +1,7 @@
 import React from "react";
 
 const Feed = () => {
-  return <div>Feed</div>;
+  return <div style={{ color: "white" }}>Feed</div>;
 };
 
 export default Feed;
