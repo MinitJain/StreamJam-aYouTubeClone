@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Box, Stack, Typography } from "@mui/material";
 import SideBar from "./SideBar";
+import Videos from "./Videos";
 
 const Feed = () => {
   return (
@@ -20,6 +21,21 @@ const Feed = () => {
         >
           copyright@2025 Minit
         </Typography>
+      </Box>
+
+      <Box p={2} sx={{ overflowY: "auto", height: "90vh", flex: 2 }}>
+        <Typography
+          variant="h4"
+          fontWeight="bold"
+          mb={2}
+          sx={{
+            color: "white",
+          }}
+        >
+          New
+          <span style={{ color: "#FC31503" }}> videos</span>
+        </Typography>
+        <Videos videos={[]} />
       </Box>
     </Stack>
   );
