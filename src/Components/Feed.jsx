@@ -2,8 +2,15 @@ import { useState, useEffect } from "react";
 import { Box, Stack, Typography } from "@mui/material";
 import SideBar from "./SideBar";
 import Videos from "./Videos";
+import { FetchFromAPI } from "../utils/fetchFromAPI";
 
 const Feed = () => {
+  const [selectedCategory, setSelectedCategory] = useState("New");
+
+  useEffect(() => {
+    FetchFromAPI(`auto-complete/?q=${selectedCategory}&hl=en&gl=US`);
+  }, [selectedCategory]);
+
   return (
     <Stack sx={{ flexDirection: { sx: "column", md: "row" } }}>
       <Box
@@ -13,7 +20,10 @@ const Feed = () => {
           px: { sx: 0, md: 2 },
         }}
       >
-        <SideBar />
+        <SideBar
+          selectedCategory={selectedCategory}
+          setSelectedCategory={setSelectedCategory}
+        />
         <Typography
           className="copyright"
           variant="body2"
@@ -32,8 +42,8 @@ const Feed = () => {
             color: "white",
           }}
         >
-          New
-          <span style={{ color: "#FC31503" }}> videos</span>
+          {selectedCategory}
+          <span style={{ color: "#ff0027" }}> videos </span>
         </Typography>
         <Videos videos={[]} />
       </Box>
