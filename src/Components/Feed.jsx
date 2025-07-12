@@ -6,9 +6,13 @@ import { FetchFromAPI } from "../utils/fetchFromAPI";
 
 const Feed = () => {
   const [selectedCategory, setSelectedCategory] = useState("New");
+  const [videos, setVideos] = useState([]);
 
   useEffect(() => {
-    FetchFromAPI(`auto-complete/?q=${selectedCategory}&hl=en&gl=US`);
+    FetchFromAPI(`search/?q=${selectedCategory}&hl=en&gl=US`).then((data) => {
+      console.log(data);
+      setVideos(data?.contents || []);
+    });
   }, [selectedCategory]);
 
   return (
@@ -45,7 +49,7 @@ const Feed = () => {
           {selectedCategory}
           <span style={{ color: "#ff0027" }}> videos </span>
         </Typography>
-        <Videos videos={[]} />
+        <Videos videos={videos} />
       </Box>
     </Stack>
   );
