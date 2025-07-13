@@ -9,9 +9,11 @@ const Feed = () => {
   const [videos, setVideos] = useState([]);
 
   useEffect(() => {
-    FetchFromAPI(`search/?q=${selectedCategory}&hl=en&gl=US`).then((data) => {
+    FetchFromAPI(
+      `search?part=snippet&q=${selectedCategory}&type=video&maxResults=20`
+    ).then((data) => {
       console.log(data);
-      setVideos(data?.contents || []);
+      setVideos(data?.items || []);
     });
   }, [selectedCategory]);
 
