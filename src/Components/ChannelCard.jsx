@@ -1,20 +1,12 @@
+// File: src/components/ChannelCard.jsx
+
 import { Box, CardContent, CardMedia, Typography } from "@mui/material";
 import { CheckCircle } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 
-import {
-  demoProfilePicture,
-  demoChannelUrl,
-  demoChannelTitle,
-} from "../utils/constants";
+import { demoProfilePicture } from "../utils/constants";
 
-const ChannelCard = ({ ChannelDetail }) => {
-  const channelId = ChannelDetail?.id?.channelId || ChannelDetail?.id;
-  const title = ChannelDetail?.snippet?.title || demoChannelTitle;
-  const image =
-    ChannelDetail?.snippet?.thumbnails?.high?.url || demoProfilePicture;
-  const subscriberCount = ChannelDetail?.statistics?.subscriberCount;
-
+const ChannelCard = ({ channelDetail, marginTop }) => {
   return (
     <Box
       sx={{
@@ -22,13 +14,15 @@ const ChannelCard = ({ ChannelDetail }) => {
         borderRadius: "20px",
         display: "flex",
         justifyContent: "center",
-        alignItems: "center",
         width: { xs: "356px", md: "320px" },
         height: "326px",
         margin: "auto",
+        marginTop: "20px",
+        marginTop,
       }}
     >
-      <Link to={`/channel/${channelId}`}>
+      {/* ✅ Use the correct id for linking */}
+      <Link to={`/Channel/${channelDetail?.id}`}>
         <CardContent
           sx={{
             display: "flex",
@@ -39,8 +33,11 @@ const ChannelCard = ({ ChannelDetail }) => {
           }}
         >
           <CardMedia
-            image={image}
-            alt={title}
+            image={
+              channelDetail?.snippet?.thumbnails?.high?.url ||
+              demoProfilePicture
+            }
+            alt={channelDetail?.snippet?.title}
             sx={{
               borderRadius: "50%",
               height: "180px",
@@ -49,13 +46,20 @@ const ChannelCard = ({ ChannelDetail }) => {
               border: "1px solid #e3e3e3",
             }}
           />
-          <Typography variant="h6">
-            {title}{" "}
-            <CheckCircle sx={{ fontSize: 14, color: "gray", ml: "5px" }} />
+          <Typography variant="h6" fontWeight="bold" color="white">
+            {channelDetail?.snippet?.title}
+            <CheckCircle sx={{ fontSize: "14px", color: "gray", ml: "5px" }} />
           </Typography>
-          {subscriberCount && (
-            <Typography variant="subtitle2" sx={{ color: "gray" }}>
-              {parseInt(subscriberCount).toLocaleString()} Subscribers
+
+          {/* ✅ Only shows if statistics are fetched */}
+          {channelDetail?.statistics?.subscriberCount && (
+            <Typography
+              sx={{ fontSize: "15px", fontWeight: 500, color: "gray" }}
+            >
+              {parseInt(
+                channelDetail?.statistics?.subscriberCount
+              ).toLocaleString("en-US")}{" "}
+              Subscribers
             </Typography>
           )}
         </CardContent>
