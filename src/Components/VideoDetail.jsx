@@ -30,7 +30,7 @@ const VideoDetail = () => {
 
   const {
     snippet: { title, channelId, channelTitle },
-    statistics: { viewCount, likeCount },
+    statistics: { viewCount, likeCount, commentCount },
   } = videoDetail;
 
   return (
@@ -64,7 +64,8 @@ const VideoDetail = () => {
           </Typography>
           <Typography variant="body2" color="gray" mt={1}>
             {parseInt(viewCount).toLocaleString()} views •{" "}
-            {parseInt(likeCount).toLocaleString()} likes
+            {parseInt(likeCount).toLocaleString()} likes •{" "}
+            {parseInt(commentCount).toLocaleString()} comments
           </Typography>
         </Box>
       </Box>
