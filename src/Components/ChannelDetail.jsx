@@ -37,7 +37,7 @@ const ChannelDetail = () => {
             height: "300px",
           }}
         />
-        {/* ✅ Pass the correct channel data to ChannelCard */}
+
         <ChannelCard channelDetail={channel} marginTop="-110px" />
       </Box>
       <Box display="flex" p={2}>

@@ -21,13 +21,17 @@ const SearchBar = () => {
   return (
     <Paper
       component="form"
-      onSubmit={handleSubmit} // ✅ fixed
+      onSubmit={handleSubmit}
       sx={{
-        borderRadius: 20,
+        display: "flex",
+        alignItems: "center",
+        width: "100%", // responsive width from parent
+        maxWidth: "600px", // optional: limits it from being too big
+        borderRadius: "20px",
         border: "1px solid #e3e3e3",
         pl: 2,
         boxShadow: "none",
-        mr: { sm: 5 },
+        backgroundColor: "#fff", // change if needed
       }}
     >
       <input
@@ -35,8 +39,17 @@ const SearchBar = () => {
         placeholder="Search..."
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
+        style={{
+          flex: 1,
+          border: "none",
+          outline: "none",
+          fontSize: "16px",
+          backgroundColor: "transparent",
+          color: "#000",
+          height: "100%",
+        }}
       />
-      <IconButton type="submit" sx={{ p: "10px", color: "red" }}>
+      <IconButton type="submit" sx={{ color: "red" }}>
         <Search />
       </IconButton>
     </Paper>

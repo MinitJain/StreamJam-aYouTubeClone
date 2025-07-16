@@ -2,7 +2,7 @@ import { Stack } from "@mui/material";
 import { Link } from "react-router-dom";
 import { logo } from "../utils/constants";
 import SearchBar from "./SearchBar";
-import { Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
 const Navbar = () => (
   <Stack
@@ -33,8 +33,9 @@ const Navbar = () => (
         StreamJAM
       </Typography>
     </Link>
-
-    <SearchBar />
+    <Box sx={{ flex: 1, mx: 5 }}>
+      <SearchBar />
+    </Box>
   </Stack>
 );
 

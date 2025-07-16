@@ -35,7 +35,10 @@ const VideoCard = ({ video }) => {
       <CardContent sx={{ backgroundColor: "#1e1e1e", height: "106px" }}>
         <Link to={videoId ? `/video/${videoId}` : demoVideoUrl}>
           <Typography variant="subtitle1" fontWeight="bold" color="#FFF">
-            {video?.snippet?.title?.slice(0, 60) || demoVideoTitle.slice(0, 60)}
+            {video?.snippet?.title
+              ?.split(" ")
+              .filter((word) => !word.startsWith("#"))
+              .join(" ") || demoVideoTitle.slice(0, 60)}
           </Typography>
         </Link>
 
