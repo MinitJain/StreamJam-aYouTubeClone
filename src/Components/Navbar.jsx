@@ -14,9 +14,11 @@ const Navbar = () => (
       top: 0,
       justifyContent: "space-between",
       zIndex: 1000,
-      backgroundColor: "rgba(18, 18, 18, 0.6)",
-      backdropFilter: "blur(12px)",
-      WebkitBackdropFilter: "blur(12px)",
+      backgroundColor: "rgba(18, 18, 18, 0.3)", // Reduced opacity for better glass effect
+      backdropFilter: "blur(20px) saturate(180%)", // Increased blur and added saturation
+      border: "1px solid rgba(255, 255, 255, 0.1)", // Subtle border for glass effect
+      borderBottom: "1px solid rgba(255, 255, 255, 0.2)", // Slightly more visible bottom border
+      boxShadow: "0 8px 32px rgba(0, 0, 0, 0.2)",
     }}
   >
     <Link to="/" style={{ display: "flex", alignItems: "center" }}>

@@ -12,9 +12,17 @@ import {
   demoChannelTitle,
 } from "../utils/constants";
 
-const VideoCard = ({ video }) => {
+const VideoCard = ({ video, stripHashtags = true }) => {
   const videoId = video?.id?.videoId || video?.id; // sometimes it's directly id
   const channelId = video?.snippet?.channelId;
+
+  const title = video?.snippet?.title || demoVideoTitle;
+  const displayTitle = stripHashtags
+    ? title
+        .split(" ")
+        .filter((word) => !word.startsWith("#"))
+        .join(" ")
+    : title;
 
   return (
     <Card
@@ -35,10 +43,7 @@ const VideoCard = ({ video }) => {
       <CardContent sx={{ backgroundColor: "#1e1e1e", height: "106px" }}>
         <Link to={videoId ? `/video/${videoId}` : demoVideoUrl}>
           <Typography variant="subtitle1" fontWeight="bold" color="#FFF">
-            {video?.snippet?.title
-              ?.split(" ")
-              .filter((word) => !word.startsWith("#"))
-              .join(" ") || demoVideoTitle.slice(0, 60)}
+            {displayTitle.slice(0, 60)}
           </Typography>
         </Link>
 

@@ -41,7 +41,6 @@ const VideoDetail = () => {
       display="flex"
       flexDirection={{ xs: "column", md: "row" }}
     >
-      {/* Video Player Section */}
       <Box flex={1} pr={{ md: 2 }}>
         <Box sx={{ width: "100%", position: "sticky", top: "86px" }}>
           <ReactPlayer
@@ -70,7 +69,6 @@ const VideoDetail = () => {
         </Box>
       </Box>
 
-      {/* Related Videos Section */}
       <Box flex={1}>
         <Typography variant="h6" fontWeight="bold" color="#fff" mb={2}>
           Related Videos
