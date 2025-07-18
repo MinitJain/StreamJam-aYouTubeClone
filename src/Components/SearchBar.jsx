@@ -1,5 +1,3 @@
-// File: src/components/SearchBar.jsx
-
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Paper, IconButton } from "@mui/material";
@@ -14,7 +12,7 @@ const SearchBar = () => {
 
     if (searchTerm.trim()) {
       navigate(`/search/${searchTerm.trim()}`);
-      setSearchTerm(""); // optional: clears the input
+      setSearchTerm("");
     }
   };
 
@@ -25,8 +23,8 @@ const SearchBar = () => {
       sx={{
         display: "flex",
         alignItems: "center",
-        width: "100%", // responsive width from parent
-        maxWidth: "600px", // optional: limits it from being too big
+        width: "100%",
+        maxWidth: "600px",
         borderRadius: "20px",
         border: "1px solid #e3e3e3",
         pl: 2,

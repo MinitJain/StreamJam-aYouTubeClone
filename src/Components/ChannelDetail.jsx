@@ -1,5 +1,3 @@
-// File: src/components/ChannelDetail.jsx
-
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Box } from "@mui/material";
@@ -12,15 +10,13 @@ const ChannelDetail = () => {
   const [videos, setVideos] = useState([]);
   const { id } = useParams();
 
-  console.log(channel, videos); // ✅ See the actual channel and videos
+  console.log(channel, videos);
 
   useEffect(() => {
-    // ✅ Get channel info
     fetchFromAPI(
       `channels?part=snippet,statistics,brandingSettings&id=${id}`
     ).then((data) => setChannel(data?.items?.[0]));
 
-    // ✅ Get videos from the channel
     fetchFromAPI(
       `search?part=snippet&channelId=${id}&order=date&maxResults=20`
     ).then((data) => setVideos(data?.items || []));

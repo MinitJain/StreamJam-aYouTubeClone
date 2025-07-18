@@ -1,5 +1,3 @@
-// File: src/components/VideoDetail.jsx
-
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import ReactPlayer from "react-player";
@@ -9,17 +7,15 @@ import fetchFromAPI from "../utils/fetchFromAPI";
 import Videos from "./Videos";
 
 const VideoDetail = () => {
-  const { id } = useParams(); // Get video ID from URL
+  const { id } = useParams();
   const [videoDetail, setVideoDetail] = useState(null);
   const [relatedVideos, setRelatedVideos] = useState([]);
 
   useEffect(() => {
-    // Fetch video details (title, stats, etc.)
     fetchFromAPI(`videos?part=snippet,statistics&id=${id}`).then((data) =>
       setVideoDetail(data?.items?.[0])
     );
 
-    // Fetch related videos
     fetchFromAPI(`search?part=snippet&relatedToVideoId=${id}&type=video`).then(
       (data) => setRelatedVideos(data?.items || [])
     );

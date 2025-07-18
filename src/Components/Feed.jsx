@@ -1,12 +1,24 @@
 import { useState, useEffect } from "react";
 import { Box, Stack, Typography } from "@mui/material";
+import { useSearchParams } from "react-router-dom";
 import SideBar from "./SideBar";
 import Videos from "./Videos";
 import FetchFromAPI from "../utils/fetchFromAPI";
 
 const Feed = () => {
-  const [selectedCategory, setSelectedCategory] = useState("Home");
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [selectedCategory, setSelectedCategory] = useState("New");
   const [videos, setVideos] = useState([]);
+
+  useEffect(() => {
+    const categoryFromURL = searchParams.get("category");
+    if (categoryFromURL) {
+      setSelectedCategory(categoryFromURL);
+    } else {
+      setSelectedCategory("New");
+      setSearchParams({ category: "New" });
+    }
+  }, [searchParams, setSearchParams]);
 
   useEffect(() => {
     FetchFromAPI(
@@ -16,6 +28,11 @@ const Feed = () => {
       setVideos(data?.items || []);
     });
   }, [selectedCategory]);
+
+  const handleCategoryChange = (newCategory) => {
+    setSelectedCategory(newCategory);
+    setSearchParams({ category: newCategory });
+  };
 
   return (
     <Stack sx={{ flexDirection: { sx: "column", md: "row" } }}>
@@ -28,7 +45,7 @@ const Feed = () => {
       >
         <SideBar
           selectedCategory={selectedCategory}
-          setSelectedCategory={setSelectedCategory}
+          setSelectedCategory={handleCategoryChange}
         />
         <Typography
           className="copyright"

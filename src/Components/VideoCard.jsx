@@ -1,5 +1,3 @@
-// File: src/components/VideoCard.jsx
-
 import { Link } from "react-router-dom";
 import { Typography, Card, CardContent, CardMedia } from "@mui/material";
 import { CheckCircle } from "@mui/icons-material";
@@ -13,7 +11,7 @@ import {
 } from "../utils/constants";
 
 const VideoCard = ({ video, stripHashtags = true }) => {
-  const videoId = video?.id?.videoId || video?.id; // sometimes it's directly id
+  const videoId = video?.id?.videoId || video?.id;
   const channelId = video?.snippet?.channelId;
 
   const title = video?.snippet?.title || demoVideoTitle;
@@ -40,7 +38,7 @@ const VideoCard = ({ video, stripHashtags = true }) => {
         />
       </Link>
 
-      <CardContent sx={{ backgroundColor: "#1e1e1e", height: "106px" }}>
+      <CardContent sx={{ backgroundColor: "black", height: "95px" }}>
         <Link to={videoId ? `/video/${videoId}` : demoVideoUrl}>
           <Typography variant="subtitle1" fontWeight="bold" color="#FFF">
             {displayTitle.slice(0, 60)}

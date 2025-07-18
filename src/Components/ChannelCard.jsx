@@ -13,7 +13,7 @@ const ChannelCard = ({ channelDetail, marginTop }) => {
         alignItems: "center",
         margin: "auto",
         marginTop,
-        width: "100%", // spans full width for centering
+        width: "100%",
       }}
     >
       <Box
@@ -36,7 +36,7 @@ const ChannelCard = ({ channelDetail, marginTop }) => {
             sx={{
               display: "flex",
               flexDirection: "column",
-              alignItems: "center", // centers everything
+              alignItems: "center",
               justifyContent: "center",
               color: "#fff",
             }}
