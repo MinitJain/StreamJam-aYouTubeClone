@@ -4,10 +4,10 @@ import { logo } from "../utils/constants";
 import SearchBar from "./SearchBar";
 
 const Navbar = () => {
-  const navigate = useNavigate(); // ✅ navigation hook
+  const navigate = useNavigate();
 
   const handleRelocation = () => {
-    navigate("/?category=New"); // ✅ passes category as a query param
+    navigate("/?category=New");
   };
 
   return (
@@ -28,12 +28,12 @@ const Navbar = () => {
       }}
     >
       <Box
-        onClick={handleRelocation} // ✅ clickable logo
+        onClick={handleRelocation}
         sx={{
           display: "flex",
           alignItems: "center",
           cursor: "pointer",
-          minWidth: "200px", // Fixed width to balance the layout
+          minWidth: "200px",
           "&:hover": {
             opacity: 0.8,
           },

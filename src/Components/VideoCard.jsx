@@ -25,7 +25,7 @@ const VideoCard = ({ video, stripHashtags = true }) => {
   return (
     <Card
       sx={{
-        width: { xs: "100%", sm: "358px" },
+        width: { md: "320px", xs: "100%" },
         boxShadow: "none",
         borderRadius: 0,
       }}
@@ -34,7 +34,14 @@ const VideoCard = ({ video, stripHashtags = true }) => {
         <CardMedia
           image={video?.snippet?.thumbnails?.high?.url || demoThumbnailUrl}
           alt={video?.snippet?.title}
-          sx={{ width: 358, height: 180 }}
+          sx={{
+            width: {
+              xs: "100%",
+              sm: "358px",
+              md: "320px",
+            },
+            height: 180,
+          }}
         />
       </Link>
 

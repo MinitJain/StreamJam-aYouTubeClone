@@ -3,11 +3,17 @@ import { Stack, Box } from "@mui/material";
 import VideoCard from "./VideoCard";
 import ChannelCard from "./ChannelCard";
 
-const Videos = ({ videos }) => {
-  if (!videos || !Array.isArray(videos)) return <div>No videos found.</div>;
+const Videos = ({ videos, direction }) => {
+  if (!videos || !Array.isArray(videos))
+    return <div>No videos found or maybe loading.</div>;
 
   return (
-    <Stack direction="row" flexWrap="wrap" justifyContent="start" gap={2}>
+    <Stack
+      direction={direction || "row"}
+      flexWrap="wrap"
+      justifyContent="start"
+      gap={2}
+    >
       {videos.map((item, index) => {
         const isVideo = item.id?.videoId;
         const isChannel = item.id?.channelId;

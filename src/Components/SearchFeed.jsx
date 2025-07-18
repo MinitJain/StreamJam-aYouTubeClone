@@ -1,5 +1,3 @@
-// File: src/components/SearchFeed.jsx
-
 import { useState, useEffect } from "react";
 import { Box, Typography } from "@mui/material";
 import { useParams } from "react-router-dom";
