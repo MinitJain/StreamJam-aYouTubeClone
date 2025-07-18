@@ -14,8 +14,9 @@ const Navbar = () => (
       top: 0,
       justifyContent: "space-between",
       zIndex: 1000,
-      background: "rgba(0, 0, 0, 0.15)",
-      backdropFilter: "blur(20px)",
+      backgroundColor: "rgba(18, 18, 18, 0.6)",
+      backdropFilter: "blur(12px)",
+      WebkitBackdropFilter: "blur(12px)",
     }}
   >
     <Link to="/" style={{ display: "flex", alignItems: "center" }}>

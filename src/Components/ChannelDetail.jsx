@@ -16,9 +16,9 @@ const ChannelDetail = () => {
 
   useEffect(() => {
     // ✅ Get channel info
-    fetchFromAPI(`channels?part=snippet&id=${id}`).then((data) =>
-      setChannel(data?.items?.[0])
-    );
+    fetchFromAPI(
+      `channels?part=snippet,statistics,brandingSettings&id=${id}`
+    ).then((data) => setChannel(data?.items?.[0]));
 
     // ✅ Get videos from the channel
     fetchFromAPI(
