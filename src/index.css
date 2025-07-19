@@ -48,7 +48,6 @@ a {
   background-color: #fc1503 !important;
   color: white !important;
   box-shadow: 0 2px 8px rgba(252, 21, 3, 0.08);
-  outline: 2px solid #fc1503;
 }
 
 .category-btn span {
