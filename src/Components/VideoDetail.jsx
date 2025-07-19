@@ -74,7 +74,10 @@ const VideoDetail = () => {
               variant="h5"
               fontWeight="bold"
               mt={2}
-              sx={{ fontSize: { xs: "1.1rem", sm: "1.3rem", md: "1.5rem" } }}
+              sx={{
+                fontSize: { xs: "1.1rem", sm: "1.3rem", md: "1.5rem" },
+                ml: { xs: 1, sm: 2, md: 3 },
+              }}
             >
               {title}
             </Typography>
@@ -92,7 +95,10 @@ const VideoDetail = () => {
               <Link to={`/Channel/${channelId}`}>
                 <Typography
                   variant="subtitle1"
-                  sx={{ fontSize: { xs: "1rem", sm: "1.1rem", md: "1.2rem" } }}
+                  sx={{
+                    fontSize: { xs: "1rem", sm: "1.1rem", md: "1.2rem" },
+                    ml: { xs: 1, sm: 2, md: 3 },
+                  }}
                   color="white"
                 >
                   {channelTitle}
