@@ -23,15 +23,17 @@ const SideBar = ({ selectedCategory, setSelectedCategory }) => {
       {categories.map((category) => (
         <button
           key={category.name}
-          className="category-btn"
+          className={`category-btn${
+            category.name === selectedCategory ? " selected" : ""
+          }`}
           onClick={() => setSelectedCategory(category.name)}
           style={{
-            background: category.name === selectedCategory ? "#FC1503" : "",
             color: "white",
-            minWidth: 80,
             minHeight: 40,
             borderRadius: 20,
             marginRight: 4,
+            padding: "7px 15px",
+            // No minWidth, let content size the button
           }}
         >
           <span

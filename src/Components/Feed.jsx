@@ -51,9 +51,16 @@ const Feed = () => {
         <Typography
           className="copyright"
           variant="body2"
-          sx={{ mt: 1.5, color: "#ffff" }}
+          sx={{
+            mt: 1.5,
+
+            color: "#aaa",
+            fontSize: "0.85rem",
+            textAlign: "center",
+            letterSpacing: "0.5px",
+          }}
         >
-          copyright@2025 Minit
+          © {new Date().getFullYear()} StreamJAM. All rights reserved.
         </Typography>
       </Box>
 

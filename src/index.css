@@ -44,6 +44,25 @@ a {
   color: white !important;
 }
 
+.category-btn.selected {
+  background-color: #fc1503 !important;
+  color: white !important;
+  box-shadow: 0 2px 8px rgba(252, 21, 3, 0.08);
+  outline: 2px solid #fc1503;
+}
+
+.category-btn span {
+  margin-right: 8px;
+  display: flex;
+  align-items: center;
+  padding: 0;
+}
+
+.category-btn span:last-child {
+  margin-right: 0;
+  padding: 0;
+}
+
 .react-player {
   height: 77vh !important;
   width: 100% !important;
@@ -60,14 +79,15 @@ a {
   text-transform: capitalize;
   display: flex;
   align-items: center;
-  justify-content: start;
+  justify-content: flex-start;
   cursor: pointer;
   background: transparent;
   outline: none;
   border: none;
 
   padding: 7px 15px;
-  margin: 10px 0px;
+  margin: 8px 0px;
+  min-width: 100px;
   border-radius: 20px;
   transition: all 0.3s ease;
 }
@@ -89,6 +109,9 @@ a {
   .category-btn {
     margin: 8px;
     font-size: 0.95rem;
+  }
+  .category-btn {
+    justify-content: center;
   }
 }
 
