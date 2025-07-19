@@ -4,12 +4,20 @@ import { categories } from "../utils/constants";
 const SideBar = ({ selectedCategory, setSelectedCategory }) => {
   return (
     <Stack
-      direction="row"
+      direction={{ xs: "row", md: "column" }}
       sx={{
-        overflowY: "auto",
-        height: { sx: "auto", md: "95%" },
-        flexDirection: { md: "column" },
+        overflowX: { xs: "auto", md: "unset" },
+        overflowY: { xs: "hidden", md: "auto" },
+        height: { xs: "auto", md: "95%" },
+        flexDirection: { xs: "row", md: "column" },
         color: "white",
+        width: { xs: "100vw", md: "auto" },
+        pb: { xs: 1, md: 0 },
+        mb: { xs: 1, md: 0 },
+        pl: { xs: 0.5, md: 0 },
+        pr: { xs: 0.5, md: 0 },
+        gap: { xs: 1, md: 0 },
+        minHeight: { xs: "48px", md: "unset" },
       }}
     >
       {categories.map((category) => (
@@ -20,6 +28,10 @@ const SideBar = ({ selectedCategory, setSelectedCategory }) => {
           style={{
             background: category.name === selectedCategory ? "#FC1503" : "",
             color: "white",
+            minWidth: 80,
+            minHeight: 40,
+            borderRadius: 20,
+            marginRight: 4,
           }}
         >
           <span

@@ -1,8 +1,17 @@
 html,
+body,
+#root {
+  width: 100vw;
+  min-width: 0;
+  max-width: 100vw;
+  overflow-x: hidden;
+  background: #000;
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
   color: white;
 }
 
@@ -63,27 +72,101 @@ a {
   transition: all 0.3s ease;
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1200px) {
+  html {
+    font-size: 16px;
+  }
   .category-btn {
-    margin: 10px;
+    font-size: 1rem;
+    padding: 6px 12px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  html {
+    font-size: 15px;
+  }
+  .category-btn {
+    margin: 8px;
+    font-size: 0.95rem;
   }
 }
 
 @media screen and (max-width: 800px) {
+  html {
+    font-size: 14px;
+  }
   .copyright {
     display: none !important;
+  }
+  .category-btn {
+    font-size: 0.9rem;
+    padding: 5px 10px;
   }
 }
 
 @media screen and (max-width: 600px) {
+  html {
+    font-size: 13px;
+  }
+  body {
+    padding: 0;
+  }
   .scroll-horizontal {
     overflow: auto !important;
   }
-
   .react-player {
-    height: 45vh !important;
+    height: 35vh !important;
+    min-height: 180px;
   }
   .search-bar {
-    width: 200px;
+    width: 100% !important;
+    min-width: 120px;
+    font-size: 1rem;
+    padding: 6px 8px;
+  }
+  .category-btn {
+    font-size: 0.85rem;
+    padding: 4px 8px;
+    margin: 6px 2px;
+    min-width: 80px;
+  }
+  .MuiTypography-h4,
+  .MuiTypography-h5,
+  .MuiTypography-h6 {
+    font-size: 1.1rem !important;
+  }
+  .MuiTypography-subtitle1 {
+    font-size: 0.95rem !important;
+  }
+  .MuiTypography-body1,
+  .MuiTypography-body2 {
+    font-size: 0.9rem !important;
+  }
+  img,
+  video {
+    max-width: 100%;
+    height: auto;
+  }
+  .MuiCard-root,
+  .MuiBox-root {
+    width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  html {
+    font-size: 12px;
+  }
+  .category-btn {
+    font-size: 0.8rem;
+    padding: 3px 4px;
+    margin: 4px 1px;
+  }
+  .search-bar {
+    font-size: 0.9rem;
+    padding: 4px 4px;
   }
 }

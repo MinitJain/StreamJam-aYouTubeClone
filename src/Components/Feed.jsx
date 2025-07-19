@@ -35,12 +35,13 @@ const Feed = () => {
   };
 
   return (
-    <Stack sx={{ flexDirection: { sx: "column", md: "row" } }}>
+    <Stack sx={{ flexDirection: { xs: "column", md: "row" }, width: "100%" }}>
       <Box
         sx={{
-          height: { sx: "auto", md: "92vh" },
-
-          px: { sx: 0, md: 2 },
+          width: { xs: "100%", md: "240px" },
+          height: { xs: "auto", md: "92vh" },
+          px: { xs: 0, md: 2 },
+          mb: { xs: 1, md: 0 },
         }}
       >
         <SideBar
@@ -56,7 +57,15 @@ const Feed = () => {
         </Typography>
       </Box>
 
-      <Box p={2} sx={{ overflowY: "auto", height: "90vh", flex: 2 }}>
+      <Box
+        p={2}
+        sx={{
+          overflowY: "auto",
+          height: { xs: "auto", md: "90vh" },
+          flex: 2,
+          width: "100%",
+        }}
+      >
         <Typography
           variant="h4"
           fontWeight="bold"

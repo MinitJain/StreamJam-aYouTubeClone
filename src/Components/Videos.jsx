@@ -9,10 +9,11 @@ const Videos = ({ videos, direction }) => {
 
   return (
     <Stack
-      direction={direction || "row"}
-      flexWrap="wrap"
+      direction={{ xs: "column", sm: direction || "row" }}
+      flexWrap={{ xs: "nowrap", sm: "wrap" }}
       justifyContent="start"
       gap={2}
+      width="100%"
     >
       {videos.map((item, index) => {
         const isVideo = item.id?.videoId;

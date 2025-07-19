@@ -54,34 +54,54 @@ const VideoDetail = () => {
   } = videoDetail;
 
   return (
-    <Box minHeight="95vh">
-      <Stack direction={{ xs: "column", md: "row" }}>
-        <Box flex={1}>
-          <Box sx={{ width: "100%", position: "sticky", top: "86px" }}>
+    <Box minHeight="95vh" width="100%">
+      <Stack direction={{ xs: "column", md: "row" }} width="100%">
+        <Box flex={1} width={{ xs: "100%", md: "auto" }}>
+          <Box
+            sx={{
+              width: "100%",
+              position: { xs: "static", md: "sticky" },
+              top: { md: "86px" },
+            }}
+          >
             <ReactPlayer
               url={`https://www.youtube.com/watch?v=${id}`}
               className="react-player"
               controls
             />
-            <Typography color="#fff" variant="h5" fontWeight="bold" mt={2}>
+            <Typography
+              color="#fff"
+              variant="h5"
+              fontWeight="bold"
+              mt={2}
+              sx={{ fontSize: { xs: "1.1rem", sm: "1.3rem", md: "1.5rem" } }}
+            >
               {title}
             </Typography>
             <Stack
               direction="row"
               justifyContent="space-between"
-              sx={{ color: "fff" }}
+              sx={{
+                color: "fff",
+                flexDirection: { xs: "column", sm: "row" },
+                gap: { xs: 1, sm: 0 },
+              }}
               py={1}
               px={2}
             >
               <Link to={`/Channel/${channelId}`}>
                 <Typography
                   variant="subtitle1"
-                  sx={{ xs: "14px", sm: "16px", md: "18px" }}
+                  sx={{ fontSize: { xs: "1rem", sm: "1.1rem", md: "1.2rem" } }}
                   color="white"
                 >
                   {channelTitle}
                   <CheckCircle
-                    sx={{ fontSize: "12px", color: "gray", ml: "5px" }}
+                    sx={{
+                      fontSize: { xs: "12px", sm: "14px" },
+                      color: "gray",
+                      ml: "5px",
+                    }}
                   />
                 </Typography>
               </Link>
@@ -105,15 +125,19 @@ const VideoDetail = () => {
             </Stack>
           </Box>
         </Box>
-        <Typography variant="body1" px={2} sx={{ opacity: 0.8 }}>
-          Related Videos
-        </Typography>
         <Box
+          width={{ xs: "100%", md: "360px" }}
           px={2}
-          py={{ md: 1, xs: 5 }}
+          py={{ md: 1, xs: 2 }}
           justifyContent="center"
           alignItems="center"
         >
+          <Typography
+            variant="body1"
+            sx={{ opacity: 0.8, mb: 1, fontSize: { xs: "1rem", sm: "1.1rem" } }}
+          >
+            Related Videos
+          </Typography>
           {!videos ? (
             <Typography color="white">Loading related videos...</Typography>
           ) : (

@@ -12,13 +12,14 @@ const Navbar = () => {
 
   return (
     <Stack
-      direction="row"
-      alignItems="center"
-      p={2}
+      direction={{ xs: "column", sm: "row" }}
+      alignItems={{ xs: "stretch", sm: "center" }}
+      p={{ xs: 1, sm: 2 }}
+      spacing={{ xs: 1, sm: 0 }}
       sx={{
         position: "sticky",
         top: 0,
-        justifyContent: "space-between",
+        justifyContent: { xs: "center", sm: "space-between" },
         zIndex: 1000,
         backgroundColor: "rgba(18, 18, 18, 0.3)",
         backdropFilter: "blur(20px) saturate(180%)",
@@ -32,14 +33,16 @@ const Navbar = () => {
         sx={{
           display: "flex",
           alignItems: "center",
+          justifyContent: { xs: "center", sm: "flex-start" },
           cursor: "pointer",
-          minWidth: "200px",
+          minWidth: { xs: "auto", sm: "200px" },
+          mb: { xs: 1, sm: 0 },
           "&:hover": {
             opacity: 0.8,
           },
         }}
       >
-        <img src={logo} alt="logo" height={45} />
+        <img src={logo} alt="logo" height={35} style={{ maxWidth: 40 }} />
         <Typography
           variant="h5"
           fontWeight="bold"
@@ -48,6 +51,7 @@ const Navbar = () => {
             color: "#fff",
             fontFamily: "Arial, sans-serif",
             letterSpacing: "1px",
+            fontSize: { xs: "1.1rem", sm: "1.5rem" },
           }}
         >
           StreamJAM
@@ -58,13 +62,19 @@ const Navbar = () => {
           flex: 1,
           display: "flex",
           justifyContent: "center",
-          mx: 3,
+          mx: { xs: 0, sm: 3 },
+          width: { xs: "100%", sm: "auto" },
         }}
       >
         <SearchBar />
       </Box>
 
-      <Box sx={{ minWidth: "200px" }}></Box>
+      <Box
+        sx={{
+          minWidth: { xs: 0, sm: "200px" },
+          display: { xs: "none", sm: "block" },
+        }}
+      ></Box>
     </Stack>
   );
 };
