@@ -5,28 +5,24 @@ import { Typography, Box, Stack } from "@mui/material";
 import { CheckCircle } from "@mui/icons-material";
 import fetchFromAPI from "../utils/fetchFromAPI";
 import Videos from "./Videos";
+import CommentList from "./CommentList";
 
 const VideoDetail = () => {
   const { id } = useParams();
   const [videoDetail, setVideoDetail] = useState(null);
   const [videos, setVideos] = useState(null);
+  const [comments, setComments] = useState([]);
 
   useEffect(() => {
-    fetchFromAPI(`videos?part=snippet,statistics&id=${id}`).then((data) =>
-      setVideoDetail(data?.items?.[0])
-    );
-
-    // 🔧 FIXED: Instead of using relatedToVideoId (which is deprecated),
-    // we'll fetch videos from the same channel
     fetchFromAPI(`videos?part=snippet,statistics&id=${id}`).then((data) => {
       const video = data?.items?.[0];
+      setVideoDetail(video);
+
       if (video?.snippet?.channelId) {
-        // Fetch other videos from the same channel
         fetchFromAPI(
           `search?part=snippet&channelId=${video.snippet.channelId}&type=video&maxResults=20`
         )
           .then((channelData) => {
-            // Filter out the current video from the results
             const relatedVideos =
               channelData?.items?.filter((item) => item.id?.videoId !== id) ||
               [];
@@ -34,13 +30,16 @@ const VideoDetail = () => {
           })
           .catch((error) => {
             console.error("Error fetching related videos:", error);
-            // Fallback: fetch popular videos instead
             fetchFromAPI(
               `search?part=snippet&q=popular&type=video&maxResults=20`
             )
               .then((fallbackData) => setVideos(fallbackData?.items || []))
               .catch(() => setVideos([]));
           });
+
+        fetchFromAPI(
+          `commentThreads?part=snippet&videoId=${id}&maxResults=10`
+        ).then((data) => setComments(data?.items || []));
       }
     });
   }, [id]);
@@ -124,11 +123,34 @@ const VideoDetail = () => {
                 <Typography variant="body1" sx={{ opacity: 1 }}>
                   {parseInt(likeCount).toLocaleString()} likes
                 </Typography>
-                <Typography variant="body1" sx={{ opacity: 1 }}>
-                  {parseInt(commentCount).toLocaleString()} comments
-                </Typography>
               </Stack>
             </Stack>
+          </Box>
+          {/* Comment count heading and comments now inside main video area */}
+          <Box
+            px={{ xs: 1, sm: 2, md: 3 }}
+            mt={4}
+            maxWidth={{
+              xs: "100%",
+              md: "calc(100vw - 420px)",
+              lg: "calc(100vw - 420px)",
+            }}
+            mx="auto"
+            sx={{ textAlign: "left", ml: { xs: 0.5, sm: 1.5, md: 2.5 } }}
+          >
+            <Typography
+              variant="h4"
+              color="white"
+              fontWeight="bold"
+              sx={{
+                fontSize: { xs: "1.3rem", sm: "1.7rem", md: "2rem" },
+                mb: 2,
+                textAlign: "left",
+              }}
+            >
+              {parseInt(commentCount).toLocaleString()} Comments
+            </Typography>
+            <CommentList comments={comments} />
           </Box>
         </Box>
         <Box
