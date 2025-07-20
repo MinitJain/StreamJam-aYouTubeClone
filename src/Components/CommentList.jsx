@@ -13,7 +13,6 @@ const CommentList = ({ comments }) => {
     );
   }
 
-  // Determine which comments to show
   const visibleComments =
     isSmallScreen && !showAll ? comments.slice(0, 1) : comments;
 
