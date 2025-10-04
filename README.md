@@ -1,4 +1,4 @@
-# YouTube Clone
+#  STREAMJAM
 
 A responsive YouTube-like video streaming web application built with React and Material-UI.  
 This project allows users to browse, search, and watch YouTube videos, view related videos, and interact with a comments section—mimicking the core experience of YouTube.
